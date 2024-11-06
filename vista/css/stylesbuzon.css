@@ -1,0 +1,49 @@
+body {
+    background: #e5e5e5;
+    margin: 0 auto;
+}
+
+.main{
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+    padding: 40px;
+}
+
+.formulario{
+    width: 80%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.form_label{
+    display: block;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.form_input{
+    width: 100%;
+    background: rgb(245, 240, 240);
+    border-radius: 6px;
+    height: 45px;
+    border: 6px solid transparent;
+}
+
+.form_label{
+    display: inline;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+}
+/* cuando el cursor pasa, parece lamanita de seleccionar */
+
+.form_btn{
+    width: 100%;
+    border-radius: 6px;
+    height: 45px;
+    background: black;
+    color: azure;
+    font-weight: bold;
+    cursor: pointer;
+}
