@@ -24,7 +24,7 @@
 <body>
 
     <!-- Barra de navegación superior -->
-    <!-- <nav class="navbar navbar-light bg-light px-3">
+     <nav class="navbar navbar-light bg-light px-3">
         <div class="container-fluid">
             <span class="navbar-text ms-auto" style="font-size: 20px;">
                 <i class="bi bi-person-circle" ></i> <?php echo $_SESSION['usuario']; ?>
@@ -33,7 +33,7 @@
                 <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
             </a>
         </div>
-    </nav> -->
+    </nav> 
 
 <div class="container">
     <h1>Gestión de Empleados</h1>
