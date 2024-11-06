@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../headers/headerRH.php">
+    <!-- cambiar por su hoja de estilos -->
+    <title>Buzon de quejas</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Buzon de Quejas</h1>
+    </header>
+    <main class="main">
+        <div class="formulario">
+            <form name="frm" id="frm" method="POST" action="php/alta.php">
+            <!-- cambiar la direccion en el futuro -->
+
+            <label>
+                <input type="radio" name="complaintType" id="anonymous" value="anonymous">
+                Queja Anonima
+            </label>
+            <label>
+                <input type="radio" name="complaintType" id="nonAnonymous" value="nonAnonymous">
+                Queja No Anonima
+            </label>
+
+                <div class="form_container">
+                    <!-- 3 capacteres-->
+                    <label for="nombre" class="form_label">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre"
+                        onchange="frm.nombre.value=frm.nombre.value.toUpperCase()" class="form_input">
+                    <p  class="alert alert-danger" id="nom" name="nom" style="display: none;">
+                        Ingresa un nombre valido!!!
+                    </p>
+                </div>
+
+                <div>
+                    <!-- 10 capacteres-->
+                    <label for="apellido" class="form_label">Apellido:</label>
+                    <input type="text" name="apellido" id="apellido"
+                        onchange="frm.apellido.value=frm.apellido.value.toUpperCase()" class="form_input">
+                    <p class="alert alert-danger" id="app" name="app" style="display: none;">
+                        Ingresa apellidos validos!!!
+                    </p>
+                </div>
+                <!-- 10 capacteres-->
+                <div>
+                    <label for="direccion" class="form_label">Dirección:</label>
+                    <input type="text" name="direccion" id="direccion"
+                        onchange="frm.direccion.value=frm.direccion.value.toUpperCase()" class="form_input">
+                    <p class="alert alert-danger" id="dir" name="dir" style="display: none;">
+                        Ingresa una direccion valida!!!
+                    </p>
+                </div>
+                <!-- 10 capacteres-->
+                <div>
+                    <label for="telefono" class="form_label">Teléfono:</label>
+                    <input type="text" name="telefono" id="telefono" onkeypress="
+                        if(event.keyCode<48 || event.keyCode >57){
+                            event.returnValue=false;
+                        }" class="form_input">
+                    <p class="alert alert-danger" id="tel" name="tel" style="display: none;">
+                        Ingresa un telefono valido!!!
+                    </p>
+                </div>
+                <!-- 25 capacteres-->
+                <div class="form_container">
+                    <label for="email" class="form_label">E-mail:</label>
+                    <input type="text" name="email" id="email" class="form_input">
+                    <p class="alert alert-danger" id="ema" name="ema" style="display: none;">
+                        Ingresa un correo valido!!!
+                    </p>
+                </div>
+
+                <!-- 25 capacteres-->
+                <div class="form_container">
+                    <label for="email" class="form_label">Motivo</label>
+                    <input type="text" name="email" id="email" class="form_input">
+                    <p class="alert alert-danger" id="ema" name="ema" style="display: none;">
+                        Ingresa el motivo de 
+                    </p>
+                </div>
+
+                    <!----> <br>
+                <div>
+                    <input type="button" value="Enviar Datos" class="form_btn" onclick="validacion()">
+                    <p class="alert alert-success" id="btn" name="btn" style="display: none;"> Enviando datos ...</p>
+                </div>
+            </form>  
+        </div>
+    </main> 
+</body>
+</html>
