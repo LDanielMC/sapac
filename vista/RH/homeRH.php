@@ -39,7 +39,7 @@
     <h1>Gestión de Empleados</h1>
     
     <!-- Campo de búsqueda -->
-    <input type="text" id="searchInput" class="form-control mb-3" placeholder="Buscar empleado...">
+    <!-- <input type="text" id="searchInput" class="form-control mb-3" placeholder="Buscar empleado..."> -->
     
     <a href="RegistroE.php" class="btn btn-primary mb-3">
         <i class="fas fa-plus"></i> Registrar Empleado
