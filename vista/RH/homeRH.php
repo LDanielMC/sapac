@@ -33,7 +33,7 @@
                 <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
             </a>
         </div>
-    </nav> 
+    </nav>  
 
 <div class="container">
     <h1>Gestión de Empleados</h1>
