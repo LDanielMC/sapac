@@ -12,3 +12,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const tienepruebras = document.getElementById("p");
+    const pruebass = document.getElementById("espe");
+
+    tienepruebras.addEventListener("change", function() {
+        if (tienepruebras.checked) {
+            pruebass.style.display = "none";
+        } else {
+            pruebass.style.display = "block";
+        }
+    });
+});

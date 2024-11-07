@@ -13,47 +13,74 @@
     </header>
     <main class="main">
         <div class="formulario">
-            <form name="frm" id="frm" method="POST" action="php/alta.php">
+            <form name="frm" id="frm" method="POST" action="../../controlador/buzon/crearQueja.php">
                 <!-- cambiar la direccion en el futuro -->
                 <div class="form-check mb-3">
                     <input name="complaintType" id="qa" class="form-check-input" type="checkbox">
                     <label for="qa" class="form-check-label">Queja Anónima</label>
                 </div>
                 
-                <div id="infoPersonal">
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre completo:</label>
-                        <input type="text" name="nombre" id="nombre" class="form-control">
-                        <p class="alert alert-danger" id="nom" style="display: none;">
-                            Ingresa un nombre válido!!!
-                        </p>
-                    </div>
+                <div class="mb-3" id="infoPersonal">
+                    <label for="nombre" class="form-label">Nombre completo:</label>
+                    <input type="text" name="nombre" id="nombre" class="form-control">
+                    <p class="alert alert-danger" id="nom" style="display: none;">
+                        Ingresa un nombre válido!!!
+                    </p>
+
+                    <label for="telefono" class="form-label">Teléfono:</label>
+                    <input type="text" name="telefono" id="telefono" class="form-control">
+                    <p class="alert alert-danger" id="tel" style="display: none;">
+                        Ingresa un teléfono con solo 10 digitos
+                    </p>
                 </div>
 
                 <!-- obligatorios -->
                 <div class="form_container">
-                    <label for="direccion" class="form-label">Dirección:</label>
-                    <input type="text" name="direccion" id="direccion" class="form-control">
-                    <p class="alert alert-danger" id="dir" style="display: none;">
-                        Ingresa una dirección válida!!!
+                    <label for="domicilio" class="form-label">Domicilio:</label>
+                    <input type="text" name="domicilio" id="domicilio" class="form-control">
+                    <p class="alert alert-danger" id="domi" style="display: none;">
+                        Ingresa una dirección de los hechos valida
                     </p>
                 </div>
 
+                <!-- No todas las quejas o todas las personas tineen este campo pero 
+                sí se puede proporcionar esta información sería mucho mejor -->
                 <div class="form_container">
-                    <label for="telefono" class="form-label">Teléfono:</label>
-                    <input type="text" name="telefono" id="telefono" class="form-control">
-                    <p class="alert alert-danger" id="tel" style="display: none;">
-                        Ingresa un teléfono válido!!!
-                    </p>
+                    <label for="cuenta" class="form-label">Cuenta:</label>
+                    <input type="text" name="cuenta" id="cuenta" class="form-control">
                 </div>
 
                 <!-- 25 capacteres-->
                 <div class="form_container">
-                    <label for="email" class="form_label">Motivo</label>
-                    <input type="text" name="email" id="email" class="form_input">
+                    <label for="motivo" class="form_label">Motivo</label>
+                    <input type="text" name="motivo" id="motivo" class="form_input">
                     <p class="alert alert-danger" id="ema" name="ema" style="display: none;">
-                        Ingresa el motivo de 
+                        Ingresa el motivo de la visita, ej. fuga del agua, pagos, etc.
                     </p>
+                </div>
+
+                
+                <div class="form_container">
+                    <label for="nrp" class="form-label">Nombre del responsable:</label>
+                    <input type="text" name="nrp" id="nrp" class="form-control">
+                </div>
+
+                <div class="form_container">
+                    <label for="hechos" class="form_label">Hechos</label>
+                    <input type="text" name="hechos" id="hechos" class="form_input">
+                    <p class="alert alert-danger" id="ema" name="ema" style="display: none;">
+                        Ingresa como sucedieron los hechos 
+                    </p>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input name="complaintType" id="p" class="form-check-input" type="checkbox">
+                    <label for="p" class="form-check-label">Si Tiene pruebas</label>
+                </div>
+
+                <div class="mb-3" id="espe">
+                    <label for="espe" class="form-label">Ingrese el tipo de prueba que tiene:</label>
+                    <input type="text" name="espe" id="espe" class="form-control">
                 </div>
 
                     <!----> <br>
@@ -65,4 +92,7 @@
         </div>
     </main> 
 </body>
+    <script src="../../controlador/buzon/validaciones.js"></script>
 </html>
+
+<!-- cuidar los asentos y es un meta en php -->
