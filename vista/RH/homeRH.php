@@ -24,7 +24,7 @@
 <body>
 
     <!-- Barra de navegación superior -->
-     <!-- <nav class="navbar navbar-light bg-light px-3">
+     <nav class="navbar navbar-light bg-light px-3">
         <div class="container-fluid">
             <span class="navbar-text ms-auto" style="font-size: 20px;">
                 <i class="bi bi-person-circle" ></i> <?php echo $_SESSION['usuario']; ?>
@@ -33,13 +33,13 @@
                 <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
             </a>
         </div>
-    </nav>   -->
+    </nav>  
 
 <div class="container">
     <h1>Gestión de Empleados</h1>
     
     <!-- Campo de búsqueda -->
-    <input type="text" id="searchInput" class="form-control mb-3" placeholder="Buscar empleado...">
+    <!-- <input type="text" id="searchInput" class="form-control mb-3" placeholder="Buscar empleado..."> -->
     
     <a href="RegistroE.php" class="btn btn-primary mb-3">
         <i class="fas fa-plus"></i> Registrar Empleado
