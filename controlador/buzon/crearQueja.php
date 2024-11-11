@@ -1,29 +1,29 @@
-<?php  include '../../modelo/db.php'?>
-<?php  //include 'includes/header.php'?>
+<?php  
+include '../../modelo/db.php';
 
-<?php
-    $hoy = date("Y-m-d");
-    $nom1=isset($_POST['nombre']) ? $_POST['nombre']: null; //es el nombre de la persona cuando no es anonima
-    $tel= isset($_POST['telefono']) ? $_POST['telefono']: null ; //telefono de la persona cuando no es anonima
-    $domi= $_POST['domicilio']; 
-    $cu= isset($_POST['cuenta']) ? $_POST['cuenta'] : null;
-    $mtv=$_POST['motivo'];
-    $responsable=$_POST['nrp'];
-    $hs=$_POST['hechos'];
-    $especificacion = isset($_POST['espe']) ? $_POST['espe'] : null;
+if (!$conn) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
 
-    if (!empty($especificacion)) {
-        $prueba = "Sí";
-    } else {
-        $prueba = "No";
-    }
-    
+$hoy = date("Y-m-d");
+$nom1 = isset($_POST['nombre']) ? $_POST['nombre'] : null;
+$tel = isset($_POST['telefono']) ? $_POST['telefono'] : null;
+$domi = $_POST['domicilio'];
+$mtv = $_POST['motivo'];
+$hs = $_POST['hechos'];
+$especificacion = isset($_POST['espe']) ? $_POST['espe'] : null;
 
-    $sql = "insert into buzon
-    (feBu,nombreCompleto, telefono, domicilio, cuenta,motivo,nomCompResp,hechos,pruebas,especificacion) 
-    values ('$hoy',$nom1,$tel,$domi,$cu,$mtv,$responsable,$hs,$prueba,$especificacion);";
-    $execute = mysqli_query($conn,$sql);
-    sleep(3);
-    header("Location: quejas.html");
+// Validar si hay pruebas
+$prueba = !empty($especificacion) ? "Sí" : "No";
+
+$sql = "INSERT INTO buzon (feBu, nombreCompleto, telefono, domicilio, motivo, hechos, pruebas, especificacion) 
+VALUES ('$hoy', '$nombre', '$telefono', '$domicilio', '$motivo', '$hechos', '$prueba', '$especificacion')";
+
+$execute = mysqli_query($conn, $sql);
+echo "Se esta rtabajando la insercion";
+
+sleep(2);
+header("Location: ../../vista/buzon/quejas.html?status=success");
+
+exit();
 ?>
-<!-- <p><a href="admin.php"><img src="./Static/img/back.png"></p>           -->
