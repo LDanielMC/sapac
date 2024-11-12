@@ -1,33 +1,39 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const anonymousCheckbox = document.getElementById("qa");
-    const personalInfoFields = document.getElementById("infoPersonal");
-    const hasProofCheckbox = document.getElementById("hasProof");
-    const proofSection = document.getElementById("espeSection");
-    
-    // Mostrar/ocultar campos de información personal si es anónima
-    anonymousCheckbox.addEventListener("change", function() {
-        if (anonymousCheckbox.checked) {
-            personalInfoFields.style.display = "none";
-        } else {
-            personalInfoFields.style.display = "block";
-        }
-    });
-    
+function validarFormulario() {
+    // Mostrar/ocultar campos de información personal si es anónimo
+    if (document.getElementById("qa").checked) {
+        document.getElementById("infoPersonal").style.display = "none";
+    } else {
+        document.getElementById("infoPersonal").style.display = "block";
+    }
+
     // Mostrar/ocultar campo de especificación de pruebas
-    hasProofCheckbox.addEventListener("change", function() {
-        if (hasProofCheckbox.checked) {
-            proofSection.style.display = "block";
-        } else {
-            proofSection.style.display = "none";
+    if (document.getElementById("hasProof").checked) {
+        document.getElementById("espeSection").style.display = "block";
+    } else {
+        document.getElementById("espeSection").style.display = "none";
+    }
+
+    // Para asegurar que solo un checkbox esté seleccionado
+    // Validación para asegurarse de que solo un checkbox esté seleccionado
+    const checkboxes = document.getElementsByName('hasProof');
+    let checkedCount = 0;
+
+    // Contar cuántos checkboxes están marcados
+    checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+            checkedCount++;
         }
     });
 
-    // Notificación de estado de inserción
-    const urlParams = new URLSearchParams(window.location.search);
-    const status = urlParams.get('status');
-    if (status === 'success') {
-        document.getElementById('successMsg').style.display = 'block';
-    } else if (status === 'error') {
-        document.getElementById('errorMsg').style.display = 'block';
+    // Si hay más de un checkbox seleccionado, desmarcar el anterior
+    if (checkedCount > 1) {
+        checkboxes.forEach((checkbox) => {
+            checkbox.checked = false;
+        });
+
+        // Mantener solo el último seleccionado
+        this.checked = true;
+        console.log('Solo puedes seleccionar una opción');
+        return false;
     }
-});
+}

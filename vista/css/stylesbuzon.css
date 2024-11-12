@@ -3,6 +3,10 @@ body {
     margin: 0 auto;
 }
 
+h1{
+    text-align: center;
+}
+
 .main{
     max-width: 800px;
     width: 100%;
@@ -42,8 +46,15 @@ body {
     width: 100%;
     border-radius: 6px;
     height: 45px;
-    background: black;
+    background: rgb(40, 59, 136);
     color: azure;
     font-weight: bold;
     cursor: pointer;
+}
+
+/* alinear botones */
+.inline-checks {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacio entre botones */
 }
