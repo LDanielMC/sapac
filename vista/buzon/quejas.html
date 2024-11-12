@@ -27,14 +27,14 @@
                     <p class="alert alert-danger" id="nom" style="display: none;">Ingresa un nombre válido!!!</p>
 
                     <label for="telefono" class="form-label">Teléfono:</label>
-                    <input type="text" name="telefono" id="telefono" class="form-control">
+                    <input type="text" name="telefono" id="telefono" class="form-control" onchange="validarFormulario()">
                     <p class="alert alert-danger" id="tel" style="display: none;">Ingresa un teléfono con solo 10 dígitos</p>
                 </div>
 
                 <!-- Domicilio -->
                 <div class="mb-3">
                     <label for="domicilio" class="form-label">Domicilio:</label>
-                    <input type="text" name="domicilio" id="domicilio" class="form-control">
+                    <input type="text" name="domicilio" id="domicilio" class="form-control" onchange="validarFormulario()">
                 </div>
 
                 <!-- Cuenta -->
@@ -53,7 +53,7 @@
                 <!-- responsable -->
                 <div class="mb-3">
                     <label for="rp" class="form-label">Nombre completo del responsable:</label>
-                    <input type="text" name="rp" id="rp" class="form-control">
+                    <input type="text" name="rp" id="rp" class="form-control" onchange="validarFormulario()">
                 </div>
 
                 <!-- Hechos -->

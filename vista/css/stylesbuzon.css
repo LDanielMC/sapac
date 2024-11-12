@@ -1,5 +1,5 @@
 body {
-    background: #e5e5e5;
+    background: #726dcd;
     margin: 0 auto;
 }
 
@@ -28,7 +28,7 @@ h1{
 
 .form_input{
     width: 100%;
-    background: rgb(245, 240, 240);
+    background: rgb(204, 204, 204);
     border-radius: 6px;
     height: 45px;
     border: 6px solid transparent;
