@@ -30,6 +30,7 @@
                         <i class="bi bi-lock-fill"></i> Contraseña:
                     </label>
                     <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                    <p class="alert alert-danger" id="btn" name="btn" style="display: none;"> Contraseña incorrecta</p>
                 </div>
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-primary">

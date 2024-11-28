@@ -1,10 +1,15 @@
 <?php
-// session_start();
+session_start();
 
-// if (!isset($_SESSION['usuario'])) {
-//     header("Location: ../../index.php");
-//     exit();
-// }
+if (!isset($_SESSION['usuario'])) {
+    header("Location: ../../index.php");
+    exit();
+}
+// Verificar si pertenece al departamento de Recursos Humanos
+if ($_SESSION['departamento'] !== 'Recursos Humanos') {
+    header("Location: ../../index.php");
+    exit();
+}
 ?>
 
 <?php include '../headers/headerRH.php';?>
@@ -24,7 +29,7 @@
 <body>
 
     <!-- Barra de navegación superior -->
-    <!-- <nav class="navbar navbar-light bg-light px-3">
+    <nav class="navbar navbar-light bg-light px-3">
         <div class="container-fluid">
             <span class="navbar-text ms-auto" style="font-size: 20px;">
                 <i class="bi bi-person-circle" ></i> <?php echo $_SESSION['usuario']; ?>
@@ -33,7 +38,7 @@
                 <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
             </a>
         </div>
-    </nav> -->
+    </nav> 
 
 <div class="container">
     <h1>Gestión de Empleados</h1>
@@ -44,6 +49,15 @@
     <a href="RegistroE.php" class="btn btn-primary mb-3">
         <i class="fas fa-plus"></i> Registrar Empleado
     </a>
+     <!-- Botón para abrir una nueva pestaña -->
+     <a href="../SP/homeSP.php" class="btn btn-warning mb-3" target="_blank">
+        <i class="bi bi-box-arrow-up-right"></i> Subir mis Documentos
+    </a>
+    <!-- Botón para abrir una nueva pestaña -->
+    <a href="../../controlador/RH/convertirpdf/reporte.php" class="btn btn-success mb-3" target="_blank">
+        <i class="bi bi-file-pdf"></i> Generar Reportes
+    </a>
+
     <form name="frmempleado" id="frmempleado" method="POST" action="../../controlador/RH/REmpleado.php">
     <fieldset>
     <div class="table-responsive">
@@ -71,12 +85,39 @@
                 while($datos = $info->fetch_object()) { ?>
                         <tr>
                         <td><?= $datos->idEmp ?></td>
-                        <td onclick="window.location.href='EditarDP.php?idEmp=<?= $datos->idEmp ?>'"><?= $datos->nombre ?></td>
-                        <td onclick="window.location.href='EditarDP.php?idEmp=<?= $datos->idEmp ?>'"><?= $datos->apellidoP ?></td>
-                        <td onclick="window.location.href='EditarDP.php?idEmp=<?= $datos->idEmp ?>'"><?= $datos->apellidoM ?></td>
-                        <td onclick="window.location.href='EditarC.php?idEmp=<?= $datos->idEmp ?>'"><?= $datos->departamento ?></td>
-                        <td onclick="window.location.href='EditarC.php?idEmp=<?= $datos->idEmp ?>'"><?= $datos->puesto ?></td>
-                        <td onclick="window.location.href='EditarP.php?idEmp=<?= $datos->idEmp ?>'"><?= $datos->usuarios ?></td>
+
+                        <td onclick="window.location.href='EditarDP.php?idEmp=<?= $datos->idEmp ?>'"
+                            data-bs-toggle="tooltip" 
+                            title="Haz clic para ver información personal">
+                            <?= $datos->nombre ?>
+                        </td>
+
+                        <td onclick="window.location.href='EditarDP.php?idEmp=<?= $datos->idEmp ?>'"
+                            data-bs-toggle="tooltip" 
+                            title="Haz clic para ver información personal">
+                            <?= $datos->apellidoP?>
+                        </td>
+
+                        <td onclick="window.location.href='EditarDP.php?idEmp=<?= $datos->idEmp ?>'"
+                            data-bs-toggle="tooltip" 
+                            title="Haz clic para ver información personal">
+                            <?= $datos->apellidoM ?>
+                        </td>
+                        <td onclick="window.location.href='EditarC.php?idEmp=<?= $datos->idEmp ?>'"
+                            data-bs-toggle="tooltip" 
+                            title="Haz clic para ver información de contrato">
+                            <?= $datos->departamento ?>
+                        </td>
+                        <td onclick="window.location.href='EditarC.php?idEmp=<?= $datos->idEmp ?>'"
+                            data-bs-toggle="tooltip" 
+                            title="Haz clic para ver información de contrato">
+                            <?= $datos->puesto ?>
+                        </td>
+                        <td onclick="window.location.href='EditarP.php?idEmp=<?= $datos->idEmp ?>'"
+                            data-bs-toggle="tooltip" 
+                            title="Haz clic para ver información del perfil">
+                            <?= $datos->usuarios ?>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -88,5 +129,16 @@
 
 <!-- Enlace al archivo JavaScript -->
 <script src="../../controlador/RH/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Inicializar tooltips con un retraso de 2 segundos (2000 ms)
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl, {
+            delay: { show: 800, hide: 0 } 
+        });
+    });
+</script>
+
 </body>
 </html>

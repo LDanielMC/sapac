@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background-color: #007bff8c;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    position: relative;
+}
+.header img {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    height: 60px;
+}
+.main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.493);
+}
+.formulario form {
+    padding: 1rem;
+}
+.form_btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.form_btn:hover {
+    background-color: #0056b3;
+}
+label {
+    font-weight: bold;
+}
+#infoPersonal {
+    display: none;
+}

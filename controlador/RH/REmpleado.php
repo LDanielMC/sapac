@@ -1,10 +1,15 @@
 <?php
-// session_start();
+session_start();
 
-// if (!isset($_SESSION['usuario'])) {
-//     header("Location: ../../index.php");
-//     exit();
-// }
+if (!isset($_SESSION['usuario'])) {
+    header("Location: ../../index.php");
+    exit();
+}
+// Verificar si pertenece al departamento de Recursos Humanos
+if ($_SESSION['departamento'] !== 'Recursos Humanos') {
+    header("Location: ../../index.php");
+    exit();
+}
 ?>
 <?php
 
@@ -43,12 +48,12 @@ VALUES ('$nombre', '$ap', '$am', '$fn', '$sexo', '$ec', '$tel', '$correo', '$dom
 if ($conn->query($sqlEmpleado) === TRUE) {
     //obtener id del empleado
     $idEmp = $conn->insert_id;
-    $feIn = date("Y-m-d"); 
+   
     $feTer = NULL; 
     $estatus = "Activo";
 
     $sqlContrato = "INSERT INTO contrato (rfc, departamento, puesto, sueldo, feIn, feTer, estatus, idEmp) 
-    VALUES ('$rfc', '$depto', '$puesto', '$sueldo', '$feIn', NULL, '$estatus', '$idEmp');";
+    VALUES ('$rfc', '$depto', '$puesto', '$sueldo', CURRENT_DATE, NULL, '$estatus', '$idEmp');";
 
     if ($conn->query($sqlContrato) === TRUE) {
         //obtener id del empleado

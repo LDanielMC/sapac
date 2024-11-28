@@ -1,0 +1,97 @@
+/* Archivo: styles.css */
+
+/* General */
+body {
+    font-family: 'Biennale', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+/* Contenedor principal */
+.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para la tabla */
+.table-responsive {
+    overflow-x: auto; /* Hacer la tabla scrollable en pantallas pequeñas */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+thead th {
+    background-color: #007bff;
+    color: #ffffff;
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+    white-space: nowrap; /* Evitar que los textos largos se dividan */
+    font-weight: bold; /* Letras en negrita para los títulos */
+}
+
+tbody tr {
+    transition: background-color 0.3s;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternar colores de filas */
+}
+
+tbody tr:hover {
+    background-color: #e9ecef; /* Color al pasar el mouse */
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    font-size: 13px;
+    word-wrap: break-word; /* Permitir que las palabras largas se ajusten */
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+    font-weight: normal; /* Letras normales para el contenido */
+}
+
+/* Botones en las celdas */
+table img {
+    max-width: 20px;
+    height: auto;
+}
+
+form .form-select {
+    font-size: 12px;
+    padding: 5px;
+}
+
+form .btn-sm {
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    thead th {
+        font-size: 12px;
+    }
+
+    form .form-select,
+    form .btn-sm {
+        font-size: 11px;
+    }
+}

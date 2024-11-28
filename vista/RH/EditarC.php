@@ -1,10 +1,15 @@
 <?php
-// session_start();
+session_start();
 
-// if (!isset($_SESSION['usuario'])) {
-//     header("Location: ../../index.php");
-//     exit();
-// }
+if (!isset($_SESSION['usuario'])) {
+    header("Location: ../../index.php");
+    exit();
+}
+// Verificar si pertenece al departamento de Recursos Humanos
+if ($_SESSION['departamento'] !== 'Recursos Humanos') {
+    header("Location: ../../index.php");
+    exit();
+}
 ?>
 <?php
 include('../../modelo/db.php');
@@ -54,7 +59,7 @@ if (isset($_GET['idEmp'])) {
 <body>
 
         <!-- Barra de navegación superior -->
-        <!-- <nav class="navbar navbar-light bg-light px-3">
+        <nav class="navbar navbar-light bg-light px-3">
         <div class="container-fluid">
             <span class="navbar-text ms-auto" style="font-size: 20px;">
                 <i class="bi bi-person-circle" ></i> <?php echo $_SESSION['usuario']; ?>
@@ -63,7 +68,7 @@ if (isset($_GET['idEmp'])) {
                 <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
             </a>
         </div>
-    </nav> -->
+    </nav>
 
     <div class="container">
         <h1>Contrato de Empleado</h1>

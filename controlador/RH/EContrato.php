@@ -1,10 +1,16 @@
 <?php
-// session_start();
+session_start();
 
-// if (!isset($_SESSION['usuario'])) {
-//     header("Location: ../../index.php");
-//     exit();
-// }
+if (!isset($_SESSION['usuario'])) {
+    header("Location: ../../index.php");
+    exit();
+}
+
+// Verificar si pertenece al departamento de Recursos Humanos
+if ($_SESSION['departamento'] !== 'Recursos Humanos') {
+    header("Location: ../../index.php");
+    exit();
+}
 ?>
 <?php
 include '../../modelo/db.php';
