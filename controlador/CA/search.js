@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     searchInput.addEventListener('keyup', function() {
         const filter = searchInput.value.toLowerCase();
             
+
+        
         tableRows.forEach(row => {
             const text = row.textContent.toLowerCase();
             row.style.display = text.includes(filter) ? '' : 'none';
