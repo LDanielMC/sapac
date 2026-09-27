@@ -17,6 +17,7 @@ if ($_SESSION['puesto'] !== 'Comisario') {
 require_once '../../librerias/PHPMailer-master/src/PHPMailer.php';
 require_once '../../librerias/PHPMailer-master/src/SMTP.php';
 require_once '../../librerias/PHPMailer-master/src/Exception.php';
+require_once '../../modelo/mail_config.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -46,13 +47,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'luisd.m.c2002@gmail.com';
-        $mail->Password = 'REDACTED_APP_PASSWORD';
+        $mail->Username = MAIL_USERNAME;
+        $mail->Password = MAIL_PASSWORD;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Configuración del correo
-        $mail->setFrom('luisd.m.c2002@gmail.com', 'Comisaria SAPAC');
+        $mail->setFrom(MAIL_USERNAME, 'Comisaria SAPAC');
         $mail->isHTML(false);  // Correo en texto plano
         $mail->Subject = $subject;
         $mail->Body = $message;

@@ -18,6 +18,7 @@ include '../../modelo/db.php';
 require_once '../../librerias/PHPMailer-master/src/PHPMailer.php';
 require_once '../../librerias/PHPMailer-master/src/SMTP.php';
 require_once '../../librerias/PHPMailer-master/src/Exception.php';
+require_once '../../modelo/mail_config.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -73,13 +74,13 @@ if ($conn->query($sqlEmpleado) === TRUE) {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'luisd.m.c2002@gmail.com';
-                $mail->Password = 'REDACTED_APP_PASSWORD';
+                $mail->Username = MAIL_USERNAME;
+                $mail->Password = MAIL_PASSWORD;
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
         
                 // Remitente y destinatario
-                $mail->setFrom('luisd.m.c2002@gmail.com', 'SAPAC');
+                $mail->setFrom(MAIL_USERNAME, 'SAPAC');
                 $mail->addAddress($correo);
         
                 // Contenido del correo
