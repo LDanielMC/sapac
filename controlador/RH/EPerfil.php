@@ -17,7 +17,7 @@ include('../../modelo/db.php');
 
 if (isset($_GET['idEmp']) && isset($_POST['confirmarContrasena'])) {
     $idEmp = $_GET['idEmp'];
-    $nuevaContrasena = $_POST['confirmarContrasena'];
+    $nuevaContrasena = password_hash($_POST['confirmarContrasena'], PASSWORD_DEFAULT);
     
     // Actualiza la contraseña en la base de datos
     $query = "UPDATE perfiles 

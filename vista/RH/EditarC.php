@@ -19,7 +19,7 @@ if (isset($_GET['idEmp'])) {
     $idEmp = $_GET['idEmp'];
     
     // Obtener información del empleado para editar
-    $query = "SELECT empleado.*, contrato.*, perfiles.usuarios, perfiles.contrasena 
+    $query = "SELECT empleado.*, contrato.*, perfiles.usuarios 
           FROM empleado 
           INNER JOIN contrato ON empleado.idEmp = contrato.idEmp 
           INNER JOIN perfiles ON contrato.idCont = perfiles.idCont 

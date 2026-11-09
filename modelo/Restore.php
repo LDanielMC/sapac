@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         CREATE TRIGGER `InHisPer` AFTER INSERT ON `perfiles` FOR EACH ROW
                         BEGIN
                             INSERT INTO historial VALUES (0,
-                            CONCAT_WS(' ', 'Registro de perfiles', NEW.usuarios, NEW.contrasena,
+                            CONCAT_WS(' ', 'Registro de perfiles', NEW.usuarios,
                             'Realizado por:', USER(), 'Fecha:', NOW()));
                         END;
 
@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         CREATE TRIGGER `UpHisPer` AFTER UPDATE ON `perfiles` FOR EACH ROW
                         BEGIN
                             INSERT INTO historial VALUES (0,
-                            CONCAT_WS(' ', 'Actualización de Perfil', NEW.usuarios, NEW.contrasena,
+                            CONCAT_WS(' ', 'Actualización de Perfil', NEW.usuarios,
                             'Realizado por:', USER(), 'Fecha:', NOW()));
                         END;
 

@@ -20,7 +20,7 @@ if (isset($_GET['idEmp'])) {
     $idEmp = $_GET['idEmp'];
     
     // Obtener información del empleado para editar
-    $query = "SELECT empleado.*, contrato.*, perfiles.usuarios, perfiles.contrasena 
+    $query = "SELECT empleado.*, contrato.*, perfiles.usuarios 
           FROM empleado 
           INNER JOIN contrato ON empleado.idEmp = contrato.idEmp 
           INNER JOIN perfiles ON contrato.idCont = perfiles.idCont 
@@ -103,7 +103,7 @@ if (isset($_GET['idEmp'])) {
 
                 <div class="mb-3">
                     <label for="confirmarContrasena">Contraseña:</label>
-                    <input class="form-control" type="password" id="confirmarContrasena" name="confirmarContrasena" value="<?= $datos->contrasena ?>" required readonly>
+                    <input class="form-control" type="password" id="confirmarContrasena" name="confirmarContrasena" placeholder="Escribe la nueva contraseña" autocomplete="new-password" required readonly>
                     
                     <span class="form-check-input" type="radio" style="cursor: pointer;" onclick="togglePassword()">
                         <i id="toggleIcon" class="fas fa-eye"></i>

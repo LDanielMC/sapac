@@ -103,7 +103,7 @@ CREATE TABLE `bdsapac`.`contrato` (
 CREATE TABLE `bdsapac`.`perfiles` (
   `idP` INT NOT NULL auto_increment,
   `usuarios` VARCHAR(20) NULL,
-  `contrasena` VARCHAR(65) NULL,
+  `contrasena` VARCHAR(255) NULL, -- hash de password_hash(); nunca la contraseña en claro
   `idCont` INT NOT NULL,
   PRIMARY KEY (`idP`, `idCont`),
     FOREIGN KEY (`idCont`)
@@ -526,7 +526,7 @@ create trigger InHisPer after insert on perfiles
 for each row
 begin
 	insert into historial values (0,
-	concat_ws(" ", "Registro de perfiles", new.usuarios, new.contrasena,
+	concat_ws(" ", "Registro de perfiles", new.usuarios,
     "Realizado por: ", user(), "Fecha; ", now()));
 end //
 select * from historial;
@@ -538,7 +538,7 @@ create trigger UpHisPer after update on perfiles
 for each row
 begin
 	insert into historial values (0,
-	concat_ws(" ", "Actualizacion de Perfil", new.usuarios, new.contrasena,
+	concat_ws(" ", "Actualizacion de Perfil", new.usuarios,
     "Realizado por: ", user(), "Fecha; ", now()));
 end //
 select * from historial;

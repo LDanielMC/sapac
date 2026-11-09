@@ -6,18 +6,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $_POST['usuario'];
     $contrasena = $_POST['contrasena'];
 
-    $query = "SELECT contrato.idCont, contrato.departamento, contrato.idEmp, contrato.puesto
+    $query = "SELECT contrato.idCont, contrato.departamento, contrato.idEmp, contrato.puesto, perfiles.contrasena
               FROM perfiles 
               INNER JOIN contrato ON perfiles.idCont = contrato.idCont 
-              WHERE perfiles.usuarios = ? AND perfiles.contrasena = ?";
+              WHERE perfiles.usuarios = ?";
 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ss", $usuario, $contrasena);
+    $stmt->bind_param("s", $usuario);
     $stmt->execute();
     $result = $stmt->get_result();
     $datos = $result->fetch_assoc();
 
-    if ($datos) {   
+    // La contraseña se guarda con password_hash; aquí solo se verifica contra ese hash.
+    if ($datos && !empty($datos['contrasena']) && password_verify($contrasena, $datos['contrasena'])) {   
         //Guardar el usuario y el id del contrato en la sesion  
         $_SESSION['usuario'] = $usuario;
         $_SESSION['departamento'] = $datos['departamento'];

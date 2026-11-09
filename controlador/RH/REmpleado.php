@@ -59,9 +59,11 @@ if ($conn->query($sqlEmpleado) === TRUE) {
     if ($conn->query($sqlContrato) === TRUE) {
         //obtener id del empleado
         $idCont = $conn->insert_id;
-        $sqlPerfil = "UPDATE perfiles SET contrasena='$contrasena' WHERE idCont='$idCont';";
+        $hashContrasena = password_hash($contrasena, PASSWORD_DEFAULT);
+        $stmtPerfil = $conn->prepare("UPDATE perfiles SET contrasena = ? WHERE idCont = ?");
+        $stmtPerfil->bind_param("si", $hashContrasena, $idCont);
 
-        if ($conn->query($sqlPerfil) === TRUE) {
+        if ($stmtPerfil->execute()) {
             $mail = new PHPMailer(true);
 
             $sqluser = "SELECT usuarios FROM perfiles WHERE idCont='$idCont';";
